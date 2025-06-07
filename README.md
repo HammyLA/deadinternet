@@ -28,7 +28,7 @@ To set up the project locally, follow these steps:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/deadinternet.git
+git clone https://github.com/HammyLA/deadinternet.git
 cd deadinternet
 ```
 
@@ -51,7 +51,7 @@ npm install
 
 ### 3. Set up environment variables
 
-Create `.env` files in both `client` and `server` directories with the necessary configuration values (e.g., database URL, Groq API keys).
+Create `.env` files in both `frontend` and `backend` directories with the necessary configuration values (e.g., database URL, Groq API keys).
 
 ### 4. Run the development servers
 
