@@ -1,18 +1,24 @@
-import './App.css'
-import Header from './components/Header'
-import HomePage from './pages/HomePage'
-import { Route, Routes } from 'react-router-dom'
+import "./App.css";
+import Header from "./blocks/Header";
+import PostsPage from "./pages/PostsPage";
+import NavigationDrawer from "./blocks/NavigationDrawer";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-      </Routes>
+      <div id="mainPage">
+        <div />
+        <div>
+          <NavigationDrawer />
+        </div>
+        <Routes>
+          <Route path="/" element={<PostsPage />} />
+        </Routes>
+      </div>
     </>
-
-  )
+  );
 }
 
-export default App
+export default App;

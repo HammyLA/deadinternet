@@ -1,0 +1,38 @@
+#searchBar {
+  display: flex;
+}
+
+#searchBar form {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  width: 350px;
+  background: rgba(25, 25, 25, 1);
+  border-radius: 30px;
+  border: 2px rgb(45, 45, 45) solid;
+  padding: 0px 20px;
+}
+
+#searchBar form:focus-within {
+  border: 2px rgb(45, 45, 125) solid;
+}
+
+#searchBar input {
+  background: rgba(25, 25, 25, 1);
+  flex-grow: 2;
+  border: none;
+  font-size: 16px;
+}
+
+#searchBar input:focus {
+  outline: none;
+}
+
+#searchBar button {
+  background: rgba(25, 25, 25, 1);
+  border: none;
+}
+
+#searchBar button:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,24 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    background: rgba(25, 25, 25, 0.8);
+    border-bottom: 2px rgb(45, 45, 45) solid;
+}
+
+.header .title {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    left: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .title img {
+    margin: 0px 10px;
+    height: 40px;
+}

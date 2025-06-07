@@ -1,0 +1,21 @@
+#navDrawer {
+    display: flex;
+    flex-direction: column;
+    border-right: 2px rgb(45, 45, 45) solid;
+    height: 100vh;
+    text-align: left;
+    padding: 20px 50px;
+}
+
+#navDrawer a {
+    margin: 15px 0px;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    transition: transform ease-in-out 0.2s;
+}
+
+#navDrawer a:hover {
+    transform: scale(1.1) translateX(-10px);
+}

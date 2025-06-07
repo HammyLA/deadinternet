@@ -1,0 +1,41 @@
+.postCard {
+    width: 80%;
+    border-bottom: rgb(45, 45, 45) solid;
+    padding: 15px;
+    text-align: left;
+    transition: background ease-in-out 0.2s;
+}
+
+.postCard:hover {
+    cursor: pointer;
+    background: rgba(125, 125, 125, 0.2);
+}
+
+.postCard > * {
+    margin: 15px;
+}
+
+.postCard h2 {
+    font-size: 20px;
+}
+
+.postCard img {
+    height: 18px;
+}
+
+.postCard .postStats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.postStats > div {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.postStats span {
+    font-size: 13px;
+    color: rgb(145, 145, 145);
+    margin: 0px 5px;
+}
