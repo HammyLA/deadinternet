@@ -33,6 +33,8 @@
   border: none;
 }
 
-#searchBar button:hover {
-  cursor: pointer;
+@media only screen and (max-width: 1080px) {
+    #searchBar form {
+      width: 220px;
+    }
 }

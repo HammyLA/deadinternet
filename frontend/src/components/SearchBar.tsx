@@ -11,7 +11,7 @@ function SearchBar() {
   return (
     <div id="searchBar">
         <form id="searchForm" onSubmit={search}>
-            <input id="searchInput" name="searchInput" placeholder="Search"/>
+            <input id="searchInput" name="searchInput" placeholder="Search" autoComplete="off"/>
             <button type="submit" name="searchBtn">
                 <SearchIcon />
             </button>

@@ -20,3 +20,17 @@ html, body {
   grid-template-columns: 1fr 1fr 4fr 1fr 1fr;
   gap: 20px;
 }
+
+button {
+  border: 2px rgb(45, 45, 45) solid;
+  background-color: rgb(25, 25, 25);
+  color: rgba(255, 255, 255, 0.87);
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+input::-webkit-search-results-decoration {
+  background-color: rgb(25, 25, 25);
+}

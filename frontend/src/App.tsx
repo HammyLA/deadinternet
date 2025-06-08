@@ -1,22 +1,15 @@
 import "./App.css";
-import Header from "./blocks/Header";
-import PostsPage from "./pages/PostsPage";
-import NavigationDrawer from "./blocks/NavigationDrawer";
 import { Route, Routes } from "react-router-dom";
+import DefaultPage from "./pages/DefaultPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
     <>
-      <Header />
-      <div id="mainPage">
-        <div />
-        <div>
-          <NavigationDrawer />
-        </div>
-        <Routes>
-          <Route path="/" element={<PostsPage />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<DefaultPage />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
     </>
   );
 }

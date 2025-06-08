@@ -1,10 +1,9 @@
-import { BorderBottom } from "@mui/icons-material";
 import PostCard from "../components/PostCard";
 import { testPosts } from "../tests/testPosts";
 import { generateResponse } from "../utility/generationAPICalls";
 import type { Post } from "../utility/types";
 
-function PostsPage() {
+function PostFeed() {
   return (
     <>
       <div>
@@ -31,4 +30,4 @@ function PostsPage() {
   );
 }
 
-export default PostsPage;
+export default PostFeed;
