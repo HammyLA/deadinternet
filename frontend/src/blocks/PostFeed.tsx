@@ -1,24 +1,14 @@
 import PostCard from "../components/PostCard";
 import { testPosts } from "../tests/testPosts";
-import { generateResponse } from "../utility/generationAPICalls";
 import type { Post } from "../utility/types";
+import PostEntry from "./PostEntry";
+import '../styles/postpage/PostFeed.css'
 
 function PostFeed() {
   return (
     <>
-      <div>
-        <div className="card">
-          <form onSubmit={generateResponse}>
-            <input
-              type="text"
-              name="input"
-              placeholder="Enter your prompt here"
-            />
-            <button type="submit" name="submit">
-              Generate
-            </button>
-          </form>
-        </div>
+      <div className="postFeed">
+        <PostEntry />
         <h1 style={{textAlign: 'left', margin: '10px 30px'}}>
           For You
         </h1>

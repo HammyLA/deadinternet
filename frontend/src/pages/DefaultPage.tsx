@@ -7,7 +7,6 @@ function DefaultPage() {
     <>
       <Header />
       <div id="mainPage">
-        <div />
         <div>
           <NavigationDrawer />
         </div>

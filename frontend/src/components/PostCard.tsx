@@ -10,7 +10,7 @@ function PostCard(post: Post) {
       <p>{post.content}</p>
       <div className="postStats">
         <div>
-          <img src="../../public/DeadInternetIcon.svg" />
+          <img src="/DeadInternetIcon.svg" />
           <span>{post.boops}</span>
         </div>
         <div>

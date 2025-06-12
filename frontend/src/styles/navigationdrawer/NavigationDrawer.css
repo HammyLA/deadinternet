@@ -1,9 +1,8 @@
 #navDrawer {
     display: flex;
     flex-direction: column;
-    border-right: 2px rgb(45, 45, 45) solid;
     height: 100vh;
-    text-align: left;
+    text-align: center;
     padding: 20px 50px;
 }
 

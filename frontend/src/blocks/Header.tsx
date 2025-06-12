@@ -9,7 +9,7 @@ function Header() {
     <>
       <div className='header'>
         <div className='title'>
-          <img src='../../public/DeadInternetIcon.svg' />
+          <img src='/DeadInternetIcon.svg' />
           <h1 className='titleText'>
             DeadInternet
           </h1>

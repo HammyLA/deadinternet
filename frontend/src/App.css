@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   padding: 0;
   margin: 0;
   width: 100%;
@@ -17,18 +18,26 @@ html, body {
 
 #mainPage {
   display: grid;
-  grid-template-columns: 1fr 1fr 4fr 1fr 1fr;
+  grid-template-columns: 2fr 3fr 2fr;
   gap: 20px;
 }
 
 button {
+  font-weight: bold;
   border: 2px rgb(45, 45, 45) solid;
+  height: 40px;
+  width: 80px;
+  border-radius: 20px;
   background-color: rgb(25, 25, 25);
   color: rgba(255, 255, 255, 0.87);
 }
 
 button:hover {
+  border: none;
+  background-color: lightseagreen;
+  color: black;
   cursor: pointer;
+  transition: all ease-in-out 0.2s;
 }
 
 input::-webkit-search-results-decoration {

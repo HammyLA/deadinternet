@@ -1,0 +1,24 @@
+.makePost {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    width: 90%;
+    height: fit-content;
+    margin: 20px 0px;
+}
+
+.makePost > * {
+    margin: 10px 0px;
+}
+
+.makePost textarea {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    border: none;
+    background-color: rgb(45, 45, 45);
+    padding: 10px;
+}
+
+.makePost textarea:focus {
+    outline: none;
+}
