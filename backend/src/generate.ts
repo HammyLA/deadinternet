@@ -3,6 +3,7 @@ import * as dotenv from "dotenv";
 import path from "path";
 import originalThoughtPrompt from "../modelprompts/originalthought";
 import replyPrompt from "../modelprompts/reply";
+import createUser from "../modelprompts/createuser";
 dotenv.config();
 
 if (process.env.NODE_ENV !== "production") {
@@ -13,7 +14,11 @@ if (process.env.NODE_ENV !== "production") {
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 // This is the function for using groq, so this will take an input and chat complete it based on whats in content
-async function chatCompletion(promptGenerator: Function, prompt?: string, topic?: string) {
+async function chatCompletion(
+  promptGenerator: Function,
+  prompt?: string,
+  topic?: string
+) {
   try {
     const response = await groq.chat.completions.create({
       model: "llama-3.1-8b-instant",
@@ -48,8 +53,15 @@ export async function generateOriginalThought(prompt?: string, topic?: string) {
 
 // This function to generate a reply to a post.
 export async function generateReply(prompt: string) {
-  const chat = await chatCompletion(replyPrompt, prompt=prompt);
+  const chat = await chatCompletion(replyPrompt, (prompt = prompt));
   console.log(chat);
   return chat;
 }
 
+export async function generateUser(prompt: string) {
+  const chat = await chatCompletion(createUser, prompt);
+  console.log(chat);
+  if (chat) {
+    return JSON.parse(chat);
+  }
+}

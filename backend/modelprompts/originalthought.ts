@@ -1,18 +1,4 @@
-const topics = [
-    'technology',
-    'sports',
-    'politics',
-    'entertainment',
-    'health',
-    'business',
-    'science',
-    'travel',
-    'food',
-    'fashion',
-    'education',
-    'lifestyle'
-]
-
+import { topics } from "./topics"
 
 export default function originalThoughtPrompt (topic?: string) {
     const randomTopic = topics[Math.floor(Math.random() * topics.length)]

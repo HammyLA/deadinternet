@@ -30,7 +30,13 @@
 
 #searchBar button {
   background: rgba(25, 25, 25, 1);
+  width: 20px;
+  transition: none;
   border: none;
+}
+
+#searchBar button:hover {
+  color: rgba(255, 255, 255, 0.87);
 }
 
 @media only screen and (max-width: 1080px) {

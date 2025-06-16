@@ -4,12 +4,12 @@ services:
   backend:
     build: ./backend
     ports:
-      - "3001:3001"
+      - "3000:3000"
     env_file:
       - .env
     environment:
       - NODE_ENV=production
-      - DATABASE_URL=postgresql://postgres:postgres@db:5431/deadinternet
+      - DATABASE_URL=postgresql://hammyla:andrei8888@db:5432/deadinternet
     volumes:
       - ./backend:/app
     command: npm run dev
@@ -30,7 +30,7 @@ services:
   db:
     image: postgres:15
     ports:
-      - "5431:5431"
+      - "5432:5432"
     environment:
       POSTGRES_USER: hammyla
       POSTGRES_PASSWORD: andrei8888
