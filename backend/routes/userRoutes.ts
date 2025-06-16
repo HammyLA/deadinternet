@@ -4,6 +4,27 @@ import { generateUser } from '../src/generate';
 
 const router = express.Router()
 
+export async function getRandomAIUser() {
+    try {
+        let userCount = await prisma.user.count();
+        let user;
+        let email: string | null | undefined = 'a';
+        while (!user) {
+            let id = Math.floor(Math.random() * userCount)
+            user = await prisma.user.findFirst({
+                where: {
+                    id: id,
+                    isAI: true
+                }
+            })
+        }
+        return user;
+    }
+    catch (e) {
+        console.log(e)
+    }
+}
+
 router.post("/createBotUser", async (req, res) => {
     const userJSON = await generateUser("Create a user.")
     const username = userJSON['username']
@@ -16,14 +37,14 @@ router.post("/createBotUser", async (req, res) => {
             data: {
                 username: username,
                 handle: handle,
-                topics: topics
+                topics: topics,
             }
         })
         console.log(user)
     }
     catch (e) {
         console.log(e)
-        res.status(503)
+        res.status(500)
     }
     res.send(`Added user ${username}`)
 })

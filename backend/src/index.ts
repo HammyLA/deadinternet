@@ -1,14 +1,17 @@
 import express, { Request, Response, NextFunction } from 'express';
 import { generateOriginalThought, generateReply } from './generate';
 import userRoutes from '../routes/userRoutes'
+import postRoutes from '../routes/postRoutes';
 
 const app = express();
 const cors = require('cors');
 const port = 3000;
 
 app.use(cors());
+app.use(express.json())
 
 app.use('/users', userRoutes)
+app.use('/posts', postRoutes)
 
 app.get('/', (req: Request, res: Response) => {
     res.send('Hello World!');

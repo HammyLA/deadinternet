@@ -48,7 +48,9 @@ async function chatCompletion(
 export async function generateOriginalThought(prompt?: string, topic?: string) {
   const chat = await chatCompletion(originalThoughtPrompt, prompt, topic);
   console.log(chat);
-  return chat;
+  if (chat) {
+    return JSON.parse(chat);
+  }
 }
 
 // This function to generate a reply to a post.
