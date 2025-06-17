@@ -1,8 +1,13 @@
 .postFeed {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-left: 2px solid rgb(45, 45, 45);
-    border-right: 2px solid rgb(45, 45, 45);
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: flex-start;  
+  align-items: stretch;       
+  
+  border-left: 2px solid rgb(45, 45, 45);
+  border-right: 2px solid rgb(45, 45, 45);
+
+  overflow-y: auto;
 }

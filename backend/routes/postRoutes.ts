@@ -6,16 +6,26 @@ import { getRandomAIUser } from './userRoutes';
 const router = express.Router()
 
 router.get('/', async (req, res) => {
-    const data = req.body
-    const skipVal = data.skip
-    const takeVal = data.take
+    const data = req.query
+    
     try {
+        let skipVal = 0;
+        let takeVal = 10;
+        if (typeof data.skip == "string" && typeof data.take == "string") {
+            skipVal = parseInt(data.skip, 10)
+            takeVal = parseInt(data.take, 10)
+        }
+        
         let posts = await prisma.post.findMany({
             where: {
                 parentId: null,
             },
             orderBy: {
                 id: 'desc',
+            },
+            include: {
+                author: true,
+                replies: true,
             },
             skip: skipVal,
             take: takeVal

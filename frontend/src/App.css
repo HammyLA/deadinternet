@@ -16,12 +16,6 @@ body {
   color: #888;
 }
 
-#mainPage {
-  display: grid;
-  grid-template-columns: 2fr 3fr 2fr;
-  gap: 20px;
-}
-
 button {
   font-weight: bold;
   border: 2px rgb(45, 45, 45) solid;

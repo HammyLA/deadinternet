@@ -1,0 +1,25 @@
+#mainPage {
+  display: grid;
+  grid-template-columns: 2fr 3fr 2fr;
+  gap: 20px;
+  height: calc(100vh - 60px);
+}
+
+.navDrawer {
+  position: sticky;
+  top: 0;
+  height: calc(100vh - 60px);
+  overflow: hidden;
+}
+
+.postFeed {
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+  
+  /* Hide scrollbar */
+  scrollbar-width: none; /* Firefox */
+}
+
+.postFeed::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
