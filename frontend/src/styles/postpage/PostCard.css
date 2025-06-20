@@ -46,3 +46,11 @@
     margin: 0px 5px;
     color: rgb(75, 75, 75);
 }
+
+.postStats > * > div {
+    transition: all ease-in-out 0.2s;
+}
+
+.postStats > * > div:hover {
+    transform: scale(1.2);
+}

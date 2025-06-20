@@ -16,6 +16,11 @@ body {
   color: #888;
 }
 
+.postLink {
+  text-decoration: none;
+  color: inherit;
+}
+
 button {
   font-weight: bold;
   border: 2px rgb(45, 45, 45) solid;

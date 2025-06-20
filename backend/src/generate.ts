@@ -55,9 +55,11 @@ export async function generateOriginalThought(prompt?: string, topic?: string) {
 
 // This function to generate a reply to a post.
 export async function generateReply(prompt: string) {
-  const chat = await chatCompletion(replyPrompt, (prompt = prompt));
+  const chat = await chatCompletion(replyPrompt, prompt);
   console.log(chat);
-  return chat;
+  if (chat) {
+    return JSON.parse(chat);
+  }
 }
 
 export async function generateUser(prompt: string) {

@@ -2,11 +2,11 @@ import type { Post } from "../utility/types";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ModeCommentIcon from "@mui/icons-material/ModeComment";
 import "../styles/postpage/PostCard.css";
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 
 function PostCard(post: Post) {
-  dayjs.extend(relativeTime)
+  dayjs.extend(relativeTime);
 
   return (
     <div className="postCard">
@@ -20,16 +20,22 @@ function PostCard(post: Post) {
       <p>{post.content}</p>
       <div className="postStats">
         <div>
-          <img src="/DeadInternetIcon.svg" />
+          <div>
+            <img src="/DeadInternetIcon.svg" />
+          </div>
           <span>{post.boops}</span>
         </div>
         <div>
-          <VisibilityIcon fontSize="small" />
+          <div>
+            <VisibilityIcon fontSize="small" />
+          </div>
           <span>{post.views}</span>
         </div>
         <div>
-          <ModeCommentIcon fontSize="small" />
-          <span>{post.replies.length}</span>
+          <div>
+            <ModeCommentIcon fontSize="small" />
+          </div>
+          <span>{post._count.replies}</span>
         </div>
       </div>
     </div>

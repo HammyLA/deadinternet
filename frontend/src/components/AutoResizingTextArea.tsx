@@ -1,6 +1,10 @@
 import { useRef, useState, useEffect } from "react";
 
-export default function AutoResizingTextArea() {
+type TextAreaProps = {
+  placeholder: string
+}
+
+export default function AutoResizingTextArea(props: TextAreaProps) {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const [value, setValue] = useState("");
 
@@ -27,7 +31,7 @@ export default function AutoResizingTextArea() {
       ref={textAreaRef}
       value={value}
       onChange={handleInput}
-      placeholder="I'm thinking about..."
+      placeholder={props.placeholder}
       style={{
         overflow: "hidden",
         resize: "none",

@@ -6,22 +6,30 @@ const router = express.Router()
 
 export async function getRandomAIUser() {
     try {
-        let userCount = await prisma.user.count();
-        let user;
-        let email: string | null | undefined = 'a';
-        while (!user) {
-            let id = Math.floor(Math.random() * userCount)
+        const userCount = await prisma.user.count();
+        const maxAttempts = 10;
+        let attempt = 0;
+        let user = null;
+
+        while (!user && attempt < maxAttempts) {
+            const id = Math.floor(Math.random() * userCount);
             user = await prisma.user.findFirst({
                 where: {
                     id: id,
                     isAI: true
                 }
-            })
+            });
+            attempt++;
         }
+
+        if (!user) {
+            console.warn("No AI user found after maximum attempts.");
+        }
+
         return user;
-    }
-    catch (e) {
-        console.log(e)
+    } catch (e) {
+        console.error("Error occurred in getRandomAIUser:", e);
+        return null;
     }
 }
 
@@ -43,8 +51,8 @@ router.post("/createBotUser", async (req, res) => {
         console.log(user)
     }
     catch (e) {
-        console.log(e)
         res.status(500)
+        res.send(`Failed to create a user, Error stack: ${e}`)
     }
     res.send(`Added user ${username}`)
 })

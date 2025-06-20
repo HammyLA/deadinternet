@@ -6,7 +6,10 @@ export interface Post {
     content: string,
     createdAt: string,
     parentId?: number,
-    replies: string[],
+    replies?: Post[]
+    _count: {
+        replies: number
+    },
     updated: string,
     views: number,
 }

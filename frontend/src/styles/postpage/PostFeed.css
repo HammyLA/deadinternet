@@ -11,3 +11,12 @@
 
   overflow-y: auto;
 }
+
+.loadMoreButton button {
+  width: 90%;
+  height: 80px;
+  border-radius: 20px;
+  font-size: 20px;
+  margin-bottom: 150px;
+  margin-top: 15px;
+}

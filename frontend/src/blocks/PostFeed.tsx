@@ -3,11 +3,14 @@ import type { Post } from "../utility/types";
 import PostEntry from "./PostEntry";
 import "../styles/postpage/PostFeed.css";
 import { useEffect, useState } from "react";
-import { getData } from "../utility/postsAPI";
+import { getPosts } from "../utility/postsAPI";
 import { CircularProgress } from "@mui/material";
+import { Link } from "react-router-dom";
+import LoadMoreBtn from "../components/LoadMoreBtn";
 
 function PostFeed() {
   const [postsCount, setPostsCount] = useState(10);
+  const [skipCount, setSkipCount] = useState(0)
   const [postList, setPostList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -15,13 +18,20 @@ function PostFeed() {
     if (postList.length === 0) {
       setIsLoading(true);
       async function fetchData() {
-        const data = await getData(postsCount);
+        const data = await getPosts(postsCount);
         setPostList(data);
         setIsLoading(false);
       }
       fetchData();
     }
-  }, [postsCount, postList]);
+  }, [postsCount]);
+
+  async function loadMorePosts () {
+    setSkipCount(skipCount + postsCount)
+    const data = await getPosts(postsCount, skipCount + postsCount)
+    const newList = postList.concat(data)
+    setPostList(newList)
+  }
 
   if (isLoading) {
     return (
@@ -33,25 +43,31 @@ function PostFeed() {
     return (
       <>
         <div className="postFeed">
-          <PostEntry />
-          <h1 style={{ textAlign: "left", margin: "10px 30px" }}>For You</h1>
+          <PostEntry placeholder="I'm thinking about. . ." header="What are you thinking about?"/>
+          <h2 style={{ textAlign: "left", margin: "10px 30px" }}>For You</h2>
           <div>
             {postList.map((post: Post) => {
               return (
-                <PostCard
-                  key={post.id}
-                  author={post.author}
-                  content={post.content}
-                  boops={post.boops}
-                  views={post.views}
-                  replies={post.replies}
-                  id={post.id}
-                  authorId={post.authorId}
-                  createdAt={post.createdAt}
-                  updated={post.updated}
-                />
+                <Link className="postLink" to={`/replies/${post.id}`} id={String(post.id)}>
+                  <PostCard
+                    author={post.author}
+                    content={post.content}
+                    boops={post.boops}
+                    views={post.views}
+                    id={post.id}
+                    authorId={post.authorId}
+                    createdAt={post.createdAt}
+                    updated={post.updated}
+                    _count={{
+                      replies: post._count.replies,
+                    }}
+                  />
+                </Link>
               );
             })}
+          </div>
+          <div className="loadMoreButton">
+            <LoadMoreBtn type="Posts" handler={loadMorePosts}/>
           </div>
         </div>
       </>
