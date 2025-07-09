@@ -29,7 +29,7 @@ async function chatCompletion(
         },
         {
           role: "user",
-          content: prompt ? prompt : "What are you thinking about?",
+          content: prompt ? prompt : "Create a social media post.",
         },
       ],
       temperature: 1,

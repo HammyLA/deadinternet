@@ -1,4 +1,4 @@
-import React, { type MouseEventHandler } from 'react'
+import { type MouseEventHandler } from 'react'
 
 type LoadMoreProps = {
     handler: MouseEventHandler,

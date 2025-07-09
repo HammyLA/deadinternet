@@ -10,7 +10,7 @@
     background: rgba(45, 45, 45, 0.2);
 }
 
-.postCard > * {
+.postCard > * > * {
     margin: 15px;
 }
 
@@ -53,4 +53,13 @@
 
 .postStats > * > div:hover {
     transform: scale(1.2);
+}
+
+.postCard a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.87);
+}
+
+.postCard .username:hover {
+    text-decoration: underline;
 }

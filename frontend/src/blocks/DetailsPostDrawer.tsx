@@ -4,7 +4,6 @@ import { getPostDetails } from "../utility/postsAPI";
 import PostCard from "../components/PostCard";
 import type { Post } from "../utility/types";
 import PostEntry from "./PostEntry";
-import { Link } from "react-router-dom";
 
 type DetailsPostDrawerProps = {
   postId: number;
@@ -57,21 +56,19 @@ function DetailsPostDrawer(props: DetailsPostDrawerProps) {
       <h2 style={{ textAlign: "left", margin: "10px 30px" }}>Replies</h2>
       {(postDetails.replies ? postDetails.replies : []).map((post: Post) => {
         return (
-          <Link className="postLink" to={`/replies/${post.id}`}>
-            <PostCard
-              id={post.id}
-              author={post.author}
-              authorId={post.authorId}
-              boops={post.boops}
-              content={post.content}
-              createdAt={post.createdAt}
-              updated={post.updated}
-              views={post.views}
-              _count={{
-                replies: post._count.replies,
-              }}
-            />
-          </Link>
+          <PostCard
+            id={post.id}
+            author={post.author}
+            authorId={post.authorId}
+            boops={post.boops}
+            content={post.content}
+            createdAt={post.createdAt}
+            updated={post.updated}
+            views={post.views}
+            _count={{
+              replies: post._count.replies,
+            }}
+          />
         );
       })}
     </div>
