@@ -57,4 +57,24 @@ router.post("/createBotUser", async (req, res) => {
     res.send(`Added user ${username}`)
 })
 
+router.get('/:id', async (req, res) => {
+    const userId = parseInt(req.params.id, 10)
+    try {
+        const user = await prisma.user.findFirst({
+            where: {
+                id: userId
+            }
+        })
+        
+        if (!user) {
+            throw new Error(`User ${userId} cannot be found`)
+        }
+
+        res.send(user)
+    } catch (e) {
+        console.log(e)
+        res.send("Error finding user information")
+    }
+})
+
 export default router

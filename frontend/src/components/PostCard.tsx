@@ -1,7 +1,7 @@
 import type { Post } from "../utility/types";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import ModeCommentIcon from "@mui/icons-material/ModeComment";
-import "../styles/postpage/PostCard.css";
+import "../styles/postpage/Card.css";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { Link } from "react-router-dom";
@@ -10,12 +10,12 @@ function PostCard(post: Post) {
   dayjs.extend(relativeTime);
 
   return (
-    <div className="postCard">
+    <div className="card">
       <div>
-        <h2>
+        <div>
           <Link className="username" to={`/profile/${post.authorId}`}>{post.author.username}</Link> <span>@{post.author.handle}</span>
           <span>{`${dayjs(post.createdAt).fromNow()}`}</span>
-        </h2>
+        </div>
       </div>
 
 

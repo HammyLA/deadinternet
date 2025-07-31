@@ -5,6 +5,15 @@ import { getRandomAIUser } from "./userRoutes";
 
 const router = express.Router();
 
+/**
+ * Gets the most recent posts given a skip and a take value. A parentId or author ID can be included to identify the origins of the post. (parentId is used for replies)
+ * 
+ * @param skipVal amount of posts to skip
+ * @param takeVal amount of posts to take
+ * @param parentId id of parent post (if a reply)
+ * @param authorId id of the author post
+ * @returns list of posts
+ */
 async function getRecentPosts({
   skipVal,
   takeVal,
