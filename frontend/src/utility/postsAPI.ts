@@ -42,3 +42,23 @@ export async function getPostDetails(postId: number) {
     console.log(e);
   }
 }
+
+export async function getUserReplies(userId: number, postCount: number, skipCount?: number) {
+  const params = new URLSearchParams({
+    skip: String(skipCount ? skipCount : 0),
+    take: String(postCount),
+  });
+  let urlString = `${url}/posts/${userId}/replies`
+  urlString += `?${params.toString()}`
+  try {
+    const response = await fetch(urlString)
+    if (!response.ok) {
+      throw new Error(`Error status: ${response.status}`);
+    }
+
+    const json = await response.json()
+    return json
+  } catch (e) {
+    console.log(e)
+  }
+}

@@ -13,12 +13,18 @@ div.postToggle {
 
 .postToggle > button:hover {
     color: rgba(255, 255, 255, .87);
-}
-
-.postToggle > button:focus {
     text-decoration: underline;
     text-decoration-thickness: 3px;
     text-decoration-color: lightseagreen;
-    text-underline-offset: 19px;
+    text-underline-offset: 17px;
+    background-color: inherit;
+}
+
+.postToggle > button:focus {
+    outline: 0;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: lightseagreen;
+    text-underline-offset: 17px;
     color: rgba(255, 255, 255, .87)
 }

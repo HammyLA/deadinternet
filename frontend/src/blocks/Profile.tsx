@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getPosts } from "../utility/postsAPI";
+import { getPosts, getUserReplies } from "../utility/postsAPI";
 import PostCard from "../components/PostCard";
 import type { Post, User } from "../utility/types";
 import { getUser } from "../utility/usersAPI";
@@ -30,10 +30,24 @@ function Profile(props: profileProps) {
       }
       fetchData();
     }
-  }, [postsCount]);
+  }, []);
 
   console.log(userInfo);
   console.log(postList);
+
+async function viewPosts() {
+  setIsLoading(true)
+  const postData = await getPosts(postsCount, skipCount, userId)
+  setPostList(postData)
+  setIsLoading(false)
+}
+
+async function viewReplies() {
+  setIsLoading(true)
+  const postData = await getUserReplies(userId, postsCount, skipCount)
+  setPostList(postData)
+  setIsLoading(false)
+}
 
   if (isLoading || !userInfo) {
     return (
@@ -65,8 +79,8 @@ function Profile(props: profileProps) {
           </div>
         </div>
         <div className="postToggle">
-            <button autoFocus>Posts</button>
-            <button>Replies</button>
+            <button onClick={() => viewPosts()}>Posts</button>
+            <button onClick={() => viewReplies()}>Replies</button>
           </div>
         <div className="listContainer">
           {postList.map((post: Post) => {

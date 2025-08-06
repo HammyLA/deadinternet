@@ -19,22 +19,24 @@ async function getRecentPosts({
   takeVal,
   parentId,
   authorId,
+  reply,
 }: {
   skipVal: number;
   takeVal: number;
   parentId?: number;
   authorId?: number;
+  reply?: boolean;
 }) {
-  if (authorId && parentId) {
-    throw new Error(
-      "Both authorId and parentId are included. Please separate usage."
-    );
-  }
+
+
   const where: any = {
     parentId: parentId ?? null,
   };
   if (authorId != null) {
     where.authorId = authorId;
+  }
+  if (reply) {
+    where.parentId = {not: null}
   }
 
   try {
@@ -72,6 +74,19 @@ router.get("/", async (req, res) => {
   let posts = await getRecentPosts({skipVal, takeVal});
   res.send(posts);
 });
+
+router.get("/:userId/replies", async (req, res) => {
+  const userId = parseInt(req.params.userId, 10);
+  const data = req.query;
+  let skipVal = 0;
+  let takeVal = 10;
+  if (typeof data.skip == "string" && typeof data.take == "string") {
+    skipVal = parseInt(data.skip, 10);
+    takeVal = parseInt(data.take, 10);
+  }
+  let posts = await getRecentPosts({skipVal, takeVal, authorId: userId, reply: true})
+  res.send(posts)
+})
 
 router.get("/:userId", async (req, res) => {
   const userId = parseInt(req.params.userId, 10);
