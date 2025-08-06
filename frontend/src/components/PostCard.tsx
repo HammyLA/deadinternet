@@ -10,7 +10,7 @@ function PostCard(post: Post) {
   dayjs.extend(relativeTime);
 
   return (
-    <div className="card">
+    <div className="card cardhover">
       <div>
         <div>
           <Link className="username" to={`/profile/${post.authorId}`}>{post.author.username}</Link> <span>@{post.author.handle}</span>

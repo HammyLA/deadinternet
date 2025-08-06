@@ -23,4 +23,8 @@ export interface User {
     topics: string[],
     username: string,
     biography: string,
+    _count: {
+        followers: number,
+        following: number,
+    }
 }

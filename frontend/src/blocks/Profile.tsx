@@ -5,7 +5,7 @@ import type { Post, User } from "../utility/types";
 import { getUser } from "../utility/usersAPI";
 import { CircularProgress } from "@mui/material";
 import { Link } from "react-router-dom";
-import '../styles/profile/Profile.css'
+import "../styles/profile/Profile.css";
 
 interface profileProps {
   userId: number;
@@ -13,11 +13,13 @@ interface profileProps {
 
 function Profile(props: profileProps) {
   const userId = props.userId;
+
   const [postsCount, setPostsCount] = useState(10);
   const [skipCount, setSkipCount] = useState(0);
   const [postList, setPostList] = useState([]);
   const [userInfo, setUserInfo] = useState<User>();
   const [isLoading, setIsLoading] = useState(true);
+  const [active, setActive] = useState<"posts" | "replies">("posts")
 
   useEffect(() => {
     if (postList.length === 0) {
@@ -35,19 +37,21 @@ function Profile(props: profileProps) {
   console.log(userInfo);
   console.log(postList);
 
-async function viewPosts() {
-  setIsLoading(true)
-  const postData = await getPosts(postsCount, skipCount, userId)
-  setPostList(postData)
-  setIsLoading(false)
-}
+  async function viewPosts() {
+    setIsLoading(true);
+    const postData = await getPosts(postsCount, skipCount, userId);
+    setPostList(postData);
+    setActive('posts')
+    setIsLoading(false);
+  }
 
-async function viewReplies() {
-  setIsLoading(true)
-  const postData = await getUserReplies(userId, postsCount, skipCount)
-  setPostList(postData)
-  setIsLoading(false)
-}
+  async function viewReplies() {
+    setIsLoading(true);
+    const postData = await getUserReplies(userId, postsCount, skipCount);
+    setPostList(postData);
+    setActive('replies')
+    setIsLoading(false);
+  }
 
   if (isLoading || !userInfo) {
     return (
@@ -61,27 +65,49 @@ async function viewReplies() {
         <div className="card">
           <div>
             <div>
-              <Link className="username" style={{fontSize: "22px"}} to={`/profile/${userId}`}>
+              <Link
+                className="username"
+                style={{ fontSize: "22px" }}
+                to={`/profile/${userId}`}
+              >
                 {userInfo.username}
               </Link>{" "}
               <span>@{userInfo.handle}</span>
             </div>
-            <button style={{position: "absolute", right: "0px"}}>Follow</button>
+            <button style={{ position: "absolute", right: "0px" }}>
+              Follow
+            </button>
           </div>
           <div>
-            <p>{userInfo.biography ? userInfo.biography : "This user has no bio."}</p>
+            <p>
+              {userInfo.biography
+                ? userInfo.biography
+                : "This user has no bio."}
+            </p>
           </div>
           <div>
-            <span>Joined on {(new Date(userInfo.createdAt)).toDateString().split(' ').slice(1).join(' ')}</span>
+            <span>
+              Joined on{" "}
+              {new Date(userInfo.createdAt)
+                .toDateString()
+                .split(" ")
+                .slice(1)
+                .join(" ")}
+            </span>
           </div>
           <div>
-            <p>following / followers</p>
+            <Link to={`/profile/${userInfo.id}/follow`} style={{fontWeight: "normal"}}>{userInfo._count.followers} Followers</Link>
+            <Link to={`/profile/${userInfo.id}/follow`} style={{fontWeight: "normal"}}>{userInfo._count.following} Following</Link>
           </div>
         </div>
         <div className="postToggle">
-            <button onClick={() => viewPosts()}>Posts</button>
-            <button onClick={() => viewReplies()}>Replies</button>
-          </div>
+          <button className={active === 'posts' ? 'active' : ''} onClick={() => viewPosts()}>
+            Posts
+          </button>
+          <button className={active === 'replies' ? 'active' : ''} onClick={() => viewReplies()}>
+            Replies
+          </button>
+        </div>
         <div className="listContainer">
           {postList.map((post: Post) => {
             return (
