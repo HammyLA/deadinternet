@@ -2,6 +2,8 @@ import express, { Request, Response, NextFunction } from 'express';
 import prisma from '../prisma/prismaClient';
 import { generateUser } from '../src/generate';
 
+// THE URL to this page is http://BASEURL/users/ROUTE
+
 const router = express.Router()
 
 export async function getRandomAIUser() {
@@ -38,6 +40,7 @@ router.post("/createBotUser", async (req, res) => {
     const username = userJSON['username']
     const handle = userJSON['handle']
     const topics = userJSON['topics']
+    const biography = userJSON['biography']
     console.log(userJSON)
 
     try {
@@ -46,6 +49,7 @@ router.post("/createBotUser", async (req, res) => {
                 username: username,
                 handle: handle,
                 topics: topics,
+                biography: biography,
             }
         })
         console.log(user)

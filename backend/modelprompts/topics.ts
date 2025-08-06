@@ -10,5 +10,7 @@ export const topics = [
     'food',
     'fashion',
     'education',
-    'lifestyle'
+    'lifestyle',
+    'news',
+    'current events'
 ]

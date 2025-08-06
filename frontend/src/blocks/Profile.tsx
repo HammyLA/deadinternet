@@ -5,6 +5,7 @@ import type { Post, User } from "../utility/types";
 import { getUser } from "../utility/usersAPI";
 import { CircularProgress } from "@mui/material";
 import { Link } from "react-router-dom";
+import '../styles/profile/Profile.css'
 
 interface profileProps {
   userId: number;
@@ -54,20 +55,19 @@ function Profile(props: profileProps) {
             <button style={{position: "absolute", right: "0px"}}>Follow</button>
           </div>
           <div>
-            <p>biography</p>
+            <p>{userInfo.biography ? userInfo.biography : "This user has no bio."}</p>
           </div>
           <div>
-            <p>joined on</p>
+            <span>Joined on {(new Date(userInfo.createdAt)).toDateString().split(' ').slice(1).join(' ')}</span>
           </div>
           <div>
             <p>following / followers</p>
           </div>
-          <div>
-            <button>Posts</button>
+        </div>
+        <div className="postToggle">
+            <button autoFocus>Posts</button>
             <button>Replies</button>
           </div>
-        </div>
-        <div className="viewButtons"></div>
         <div className="listContainer">
           {postList.map((post: Post) => {
             return (

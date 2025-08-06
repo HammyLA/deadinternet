@@ -95,9 +95,9 @@ export default function originalThoughtPrompt(topic?: string) {
   const randomTopic = topics[Math.floor(Math.random() * topics.length)];
   const randomPostType = selectPostType();
   console.log(randomPostType);
-  return `You are a social media user making a text post about ${
+  return `You are a social media user making a text post about ${ 
     topic ? topic : randomTopic
-  }. The type of post is a/an ${randomPostType}. Keep it a brief post. Don't use quotation marks unless it is a quote. Make up details about the post. Generate your response in JSON parsable format and do not generate anything else:
+  }. The type of post is a/an ${randomPostType}. Keep it a brief post. Don't use quotation marks unless it is a quote. Use quotation marks to wrap the content string. Make up details about the post. Generate your response in JSON parsable format and do not generate anything else:
     
     {
         "content": "___"

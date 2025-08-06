@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import SearchBar from '../components/SearchBar'
 import '../styles/header/Header.css'
+import { generateResponse } from '../utility/generationAPICalls';
+import { generateUser } from '../utility/usersAPI';
 
 function Header() {
   const navigate = useNavigate();
@@ -16,6 +18,12 @@ function Header() {
         </div>
         <SearchBar />
         <div className='headerBtns'>
+          <button onClick={() => generateUser()}>
+            + User
+          </button>
+          <button onClick={() => generateResponse()}>
+            + Post
+          </button>
           <button onClick={() => navigate('/login')}>
             Login
           </button>

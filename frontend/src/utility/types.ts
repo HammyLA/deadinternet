@@ -22,4 +22,5 @@ export interface User {
     isAi: boolean,
     topics: string[],
     username: string,
+    biography: string,
 }
