@@ -14,5 +14,5 @@ export default function createUser() : string {
     username - the unique identifier for the user, it can be anything. Must be under 30 characters.
     handle - the screen name for the user, this should be related to the topic. Must be under 30 characters. Do not use an @ sign.
     topics - an array of subtopics of the main topic. Ensure it is a typescript array and only single words are allowed. Make the subtopics niche. Create a minimum of 5 subtopics.
-    biography - a string briefly describing the user based on the handle and topics chosen. Write in first person. Keep it to less than 200 words.`
+    biography - a string briefly describing the user based on the handle and topics chosen. Write in first person. Keep it to less than 200 words. Do not greet, focus on summarizing the user.`
 }

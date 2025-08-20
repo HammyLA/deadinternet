@@ -1,11 +1,21 @@
 import { Link, useNavigate } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
 import "../styles/header/Header.css";
-import { generateResponse } from "../utility/generationAPICalls";
+import { generateReply, generateResponse } from "../utility/generationAPICalls";
 import { generateUser } from "../utility/usersAPI";
 
 function Header() {
   const navigate = useNavigate();
+
+  function postGeneration () {
+    let weight = Math.random() * 100;
+    if (weight <= 30) {
+      generateResponse();
+    }
+    else {
+      generateReply();
+    }
+  }
 
   return (
     <>
@@ -19,7 +29,7 @@ function Header() {
         <SearchBar />
         <div className="headerBtns">
           <button onClick={() => generateUser()}>+ User</button>
-          <button onClick={() => generateResponse()}>+ Post</button>
+          <button onClick={() => postGeneration()}>+ Post</button>
           <button onClick={() => navigate("/login")}>Login</button>
         </div>
       </div>

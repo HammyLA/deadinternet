@@ -13,10 +13,6 @@ app.use(express.json())
 app.use('/users', userRoutes)
 app.use('/posts', postRoutes)
 
-app.get('/', (req: Request, res: Response) => {
-    res.send('Hello World!');
-})
-
 app.get('/generate-original/', async (req: Request, res: Response, next: NextFunction) => {
     const response = await generateOriginalThought();
     res.send(response);
